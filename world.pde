@@ -150,9 +150,9 @@ void generate() {
   }
 
   createCookie();
-  for(int I = 0; I < int(random(2, 5))) {}
+  for(int I = 0; I < int(random(2, 5))) {
   createTrees();
-
+}
   for (int i = 0; i < worldSize; i ++) {
     world[i][0] = new tile(0, i, blockArry[3]);
     world[i][worldSize-1] = new tile(worldSize-1, i, blockArry[3]);
