@@ -23,11 +23,14 @@ class player {
       posx = prevx;
       posy = prevy;
     } else {
-      if (cookies.WorldPosX == posx && cookies.WorldPosY == posy) {
-        Inverted.collect(cookies.TimsSecretStash);
+      if (!worldlayer[posy][posx].empty && worldlayer[posy][posx] != MCtil) {
+        //worldlayer[posy][posx]
+        ItemStack i = worldlayer[posy][posx].brakeI();
+        Inverted.collect(i.TimsSecretStash);
       }
-      worldlayer[posy][posx] = MCtil;
+
       worldlayer[prevy][prevx] = emptytile;
+      worldlayer[posy][posx] = MCtil;
     }
   }
 
@@ -55,15 +58,19 @@ class inventory {
     stroke(144);
     strokeWeight(2);
     fill(192);
+    ellipseMode(CORNER);
     rectMode(CORNER);
+
     rect(x, y, wide, tall);
     translate(width/8, height/3);
     for (int i = 0; i < wdth; i ++) {
       for (int j = 0; j < lngth; j ++) {
+
+
         fill(144);
         noStroke();
 
-        rect(j * invSlotSize + x, i * invSlotSize + y, invSlotSize - sqrt(invSlotSize), invSlotSize - sqrt(invSlotSize));
+        ellipse(j * invSlotSize + x, i * invSlotSize + y, invSlotSize - sqrt(invSlotSize)/2, invSlotSize - sqrt(invSlotSize)/2);
 
         try {
           items[(i * wdth) + j].display(j * invSlotSize + 2 + x, i * invSlotSize - 2 + y, invSlotSize - 8);
@@ -73,6 +80,12 @@ class inventory {
 
         catch (NullPointerException exception) {
         }
+
+        strokeWeight(5);
+        stroke(224);
+        noFill();
+
+        rect(j*invSlotSize+x-2, i*invSlotSize+y-2, invSlotSize, invSlotSize);
       }
     }
   }
@@ -95,12 +108,19 @@ class inventory {
     //  if (ijk.count == 0) b = true;
     //}
     int i = 0;
-    while (items[i] != null) {
-      i ++;
-      println(i);
+    try {
+      while (items[i].time != ijk.tim) {
+        i ++;
+      }
+
+      items[i].count += ijk.count;
     }
-    println(i);
-    items[i] = new itemSlot(new item(ijk.tim.texture, ijk.tim.name), ijk.count, byte(255));
+    catch(NullPointerException exception) {
+      while (items[i] != null) {
+        i ++;
+      }
+      items[i] = new itemSlot(new item(ijk.tim.texture, ijk.tim.name), ijk.count, byte(255));
+    }
   }
 
   //This time we collect a block

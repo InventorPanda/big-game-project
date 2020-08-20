@@ -16,9 +16,11 @@ tile emptytile = new tile(0, 0);
 block dirt;
 block grass;
 
-block[] blockArry = new block[4];
+block[] blockArry = new block[5];
 tile[][] world = new tile[40][40];
 tile[][] worldlayer = new tile[40][40];
+
+tile[] tils = new tile[1];
 
 player MC;
 tile MCtil;
@@ -27,6 +29,7 @@ boolean invtog = false;
 
 item cookie;
 ItemStack cookies;
+item[] itms = new item[1];
 
 byte yMvm, xMvm;
 
@@ -43,10 +46,13 @@ void setup() {
   dirt = new block("Dirt", txtdirt, false);
   grass = new block("Grass", txtgrass, false, dirt, byte(1), byte(1));
 
+  itms[0] = new item(loadImage("wood.png"), "Wood");
+
   blockArry[0] = dirt;
   blockArry[1] = grass;
   blockArry[2] = new block("Wooden Wall", loadImage("planks_birch.png"), true);
   blockArry[3] = new block("Barrier Wall", loadImage("wall.png"), true);
+  blockArry[4] = new block("Sapling", loadImage("sapling.png"), false, itms[0], byte(4), byte(7), true);
 
   MCtil = new tile(MC.posx, MC.posy, new block("Player", loadImage("ruby.png"), false));
   MCtil.p = true;
@@ -55,6 +61,7 @@ void setup() {
 
   generateEmpty();
   generate();
+  frameRate(24);
 }
 
 void draw() {
@@ -85,10 +92,10 @@ void keyPressed() {
     xMvm = -1;
     break;
   }
-  MC.move(yMvm, xMvm);
 }
 
 void keyReleased() {
+  MC.move(yMvm, xMvm);
   switch(key) {
 
   case 'w':

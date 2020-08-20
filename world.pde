@@ -48,6 +48,15 @@ class block {
     dropMin = min;
     dropMax = mx;
   }
+  block(String Name, PImage txtr, boolean dropsit, item drOp, byte min, byte mx, boolean wal) {
+    name = Name;//Name, from One Piece. Said "Nom may", I've only got up to the episode where she betrays them, so please come back Name!
+    texture = txtr;
+    dropsSelf = dropsit;
+    drop = drOp; // Epic hacker name, without an actual Zero.
+    dropMin = min;
+    dropMax = mx;
+    isWall = wal;
+  }
 
   block(String Name, PImage txtr, boolean dropsit, block drOp, byte min, byte mx) {
     name = Name;
@@ -141,6 +150,7 @@ void generate() {
   }
 
   createCookie();
+  createTrees();
 
   for (int i = 0; i < worldSize; i ++) {
     world[i][0] = new tile(0, i, blockArry[3]);
@@ -166,6 +176,19 @@ void generateEmpty() {
   for (int i = 0; i < worldSize; i ++) {
     for (int j = 0; j < worldSize; j ++) {
       worldlayer[i][j] = emptytile;
+    }
+  }
+}
+
+void createTrees() {
+  boolean b = false;
+  while (!b) {
+    int rnx = floor(random(worldSize-1))+1;
+    int rny = floor(random(worldSize-1))+1;
+    if (worldlayer[rny][rnx].empty) {
+      b = true;
+      tils[0] = new tile(rnx, rny, blockArry[4]);
+      worldlayer[rny][rnx] = tils[0];
     }
   }
 }
