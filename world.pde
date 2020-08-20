@@ -150,6 +150,7 @@ void generate() {
   }
 
   createCookie();
+  for(int I = 0; I < int(random(2, 5))) {}
   createTrees();
 
   for (int i = 0; i < worldSize; i ++) {
