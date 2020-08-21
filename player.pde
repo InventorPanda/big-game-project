@@ -5,12 +5,14 @@ int posx, posy;
 int prevx, prevy;
 byte viewfield;
 inventory Inverted;
+inventory quickswap;
 
 player(int x, int y, byte fov) {
 posx = x;
 posy = y;
 viewfield = fov;
 Inverted = new inventory(byte(9), byte(3));
+quickswap = inventory(byte(3), byte(1));
 }
 
 void move(byte y, byte x) {
