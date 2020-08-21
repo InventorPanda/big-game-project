@@ -69,7 +69,7 @@ background(0);
 if (!invtog)
 renderAFloor();
 else {
-MC.Inverted.display(40, 40, width-80, height-80);
+MC.Inverted.display(width/8, height/3, width-80, height-80);
 }
 MC.quickswap.display(width/3 - 40, (height/3) * 2 - 40, width/3, 40);
 }
