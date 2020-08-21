@@ -70,7 +70,7 @@ ellipseMode(CORNER);
 rectMode(CORNER);
 
 rect(x, y, wide, tall);
-translate(width/8, height/3);
+translate(x, y);
 for (int i = 0; i < wdth; i ++) {
 for (int j = 0; j < lngth; j ++) {
 
