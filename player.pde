@@ -31,6 +31,11 @@ ItemStack i = worldlayer[posy][posx].brakeI();
 Inverted.collect(i.TimsSecretStash);
 }
 
+float attack() {
+
+return random(strengthmn, strengthmx);
+}
+
 worldlayer[prevy][prevx] = emptytile;
 worldlayer[posy][posx] = MCtil;
 }
