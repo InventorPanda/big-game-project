@@ -90,10 +90,18 @@ return new BlockAndCount(drOOp, d);
 class item {
 PImage texture;
 String name;
+float atkPlus = 0;
 
 item(PImage img, String Name) {
 texture = img;
 name = Name;
+}
+
+item(PImage img, String nami, float ATK){
+atkPlus = ATK;
+texture = img;
+name = nami;
+
 }
 }
 
@@ -150,7 +158,7 @@ world[i][j] = new tile(j, i, blockArry[1]);
 }
 
 createCookie();
-for(int I = 0; I < int(random(2, 5))) {
+for (int I = 0; I < int(random(2, 5))) {
 createTrees();
 }
 for (int i = 0; i < worldSize; i ++) {
