@@ -206,3 +206,5 @@ if (count > maxCount) count = maxCount;
 return new BlockAndCount(im, carrySum);
 }
 }
+
+class weapon {}
