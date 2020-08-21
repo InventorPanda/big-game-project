@@ -81,7 +81,7 @@ noStroke();
 ellipse(j * invSlotSize + x, i * invSlotSize + y, invSlotSize - sqrt(invSlotSize)/2, invSlotSize - sqrt(invSlotSize)/2);
 
 try {
-items[(i * wdth) + j].display(j * invSlotSize + 2, i * invSlotSize - 2, invSlotSize - 8);
+items[(i * wdth) + j].display(j * invSlotSize + 2 + x, i * invSlotSize - 2 + y, invSlotSize - 8);
 fill(255);
 text(items[(i*wdth)+j].count, j*invSlotSize + x, i*invSlotSize + y);
 }
