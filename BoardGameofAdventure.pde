@@ -118,4 +118,12 @@ case 'e':
   invtog = !invtog;
   break;
 }
+if (invtog) {
+if (key == '1') {
+int zz = (mouseX/48) + ((mouseY/48) * MC.Inverted.wdth);
+ItemAndCount I = MC.Inverted.items.time;
+MC.Inverted.collect(new ItemAndCount(I.tim, -I.count));
+MC.quickswap.collect(I);
+}
+}
 }
