@@ -72,7 +72,7 @@ rectMode(CORNER);
 rect(x, y, wide, tall);
 translate(x, y);
 for (int i = 0; i < wdth; i ++) {
-for (int j = 0; j < lngth; j ++) {
+for (int j = 0; j < lOng; j ++) {
 
 
 fill(144);
