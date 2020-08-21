@@ -1,5 +1,6 @@
 class player {
 long healthmx, health;
+float strengthmx, strengthmn;
 int posx, posy;
 int prevx, prevy;
 byte viewfield;
@@ -36,8 +37,7 @@ worldlayer[posy][posx] = MCtil;
 }
 
 boolean inFOV(int i, int j) {
-return ((i < posy + viewfield / 2) || (i > posy - viewfield / 2))
-&&   ((j < posx + viewfield / 2) || (j > posx - viewfield / 2));
+return ((i < posy + viewfield / 2) || (i > posy - viewfield / 2)) && ((j < posx + viewfield / 2) || (j > posx - viewfield / 2));
 }
 }
 
